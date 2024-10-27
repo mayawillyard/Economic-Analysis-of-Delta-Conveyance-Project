@@ -22,7 +22,7 @@ str(surveys)
 head(surveys) #only shows the first 10 columns ONLY TO CHECK 
 
 #Group_by and Summarize
-#split data to sepeate groups and perform analysis, then bring it back together
+#split data to seperate groups and perform analysis, then bring it back together
 # requires categorical variable to group 
 surveys %>% 
   group_by(sex) %>% 

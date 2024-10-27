@@ -8,7 +8,8 @@ surveys
 # Question 2  
 surveys %>% 
   filter(weight > 30 & weight < 60) 
-#surveys <- select (filter(surveys, weights, c(30:60))) why doesn't this work 
+#surveys <- select (filter(surveys, weights, c(30:60))) why doesn't this work
+#print out first few rows write head(n=?)
 
 # Question 3  
 # renaming is the tibble
@@ -35,7 +36,7 @@ surveys %>%
   filter(is.na(weight)) %>% 
   group_by(plot_id) %>% 
   tally() %>% 
-  arrange(desc(n))
+  arrange(desc(n)) # n because the column name is "n"
 
 surveys %>% 
   filter(is.na(weight)) %>% 
@@ -48,7 +49,7 @@ surveys_avg_weight <- surveys %>%
   filter(!is.na(weight)) %>% 
   mutate(avg_weight = mean(weight)) %>% 
   group_by(species_id, sex) %>% 
-  select (species_id, sex, weight, avg_weight) #why is my weight all the same? 
+  select (species_id, sex, weight, avg_weight) #why is my weight all the same?/ keep species, sex, weight, and average weight column but deletes the rest  
 surveys_avg_weight
 # all of my weight is shown as 42.7, how do I fix this? 
 
@@ -58,3 +59,9 @@ surveys_avg_weight <- surveys_avg_weight %>%
 
 surveys_avg_weight
 # my weight is still all of the same 
+
+#how to make a mini summary table 
+surveys_avg_weight <- surveys %>%  group_by(species_id, sex) %>% 
+  summarize(avg_weight= mean(weight), max_weight = max(weight))
+
+
