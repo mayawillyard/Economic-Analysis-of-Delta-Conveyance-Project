@@ -128,7 +128,7 @@ surveys_mz <- surveys %>%
 surveys_mz
 unique(surveys_mz$genus)
 
-# looks like a cross tab 
+# looks like a cross table
 
 wide_survey <- surveys_mz %>% 
   pivot_wider(names_from = "plot_id", values_from = "mean_weight") #names_from taking columns name from specific variable
