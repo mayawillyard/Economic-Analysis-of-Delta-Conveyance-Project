@@ -12,7 +12,7 @@ surveys_base <- surveys[1:5000, c(6,9,13)] #parenthesis are for FUNCTIONS; Brack
 surveys_base
 surveys_base <- surveys_base[complete.cases(surveys_base), ]
 surveys_base
-surveys_base$species_id <- factor(surveys_base$species_id)
+surveys_base$species_id <- factor(surveys_base$species_id) #changes factors to integrals
 surveys_base$species_id
 surveys_base$plot_type <- factor(surveys_base$plot_type)
 surveys_base$plot_type
@@ -20,5 +20,5 @@ surveys_base$plot_type
 levels(surveys_base$species_id)
 ?factor
 
-typeof(surveys_base$species_id)
+typeof(surveys_base$species_id) #checks what they changed to 
 class(surveys_base$plot_type)

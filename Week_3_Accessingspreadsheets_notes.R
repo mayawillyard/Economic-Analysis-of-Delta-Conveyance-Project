@@ -1,9 +1,12 @@
 # Accessing Spreadsheets
 #CSV file, text file open in R
+?read.csv 
 surveys <- read.csv("data/portal_data_joined.csv") #click on tab to import data 
 str(surveys)
 surveys
 class(surveys)
+file_loc <- "data/portal_data_joined.csv"
+surveys <- read.csv(file_loc)
 
 nrow(surveys)
 ncol(surveys)
@@ -17,15 +20,22 @@ head (surveys, n=3)
 
 
 summary(surveys) # descriptive summary of every column it finds
+summary(surveys$record_id)
 #summary on sex 
 surveys$sex
 ?summary
 summary.data.frame(surveys)
 summary(object = surveys)
 
+#ROW,COLUMN
 surveys[1, 5]
 head(surveys, 1)
+colnames(surveys) #know all names in survey
+surveys[c("record_id","year", "day")]
+dim(surveys[c("record_id","year","day")])
+head(surveys,1)
 
+# pararenthesis for functions/ brackets are for datasets?
 # you can pull multiple values out of the row or column 
 surveys[1,] # show me all of the row
 surveys[,1] #show me all of the data in the column
@@ -47,18 +57,24 @@ surveys [-1,] #all columns without the first row
 
 surveys [-c(7:nrow(surveys)),]
 nrow(surveys)==34786
-#LINE 48 is the same as head(surveys)
+#LINE 58 is the same as head(surveys)
 head(surveys)
+# use n = to view  specific amount of the numbers 
 
 #index by name of column 
 surveys["genus"]
 head(surveys["genus"]) #first 6 rows of genus column
-head(surveys[, "genus"]) #same information as LINE 55 but different format
+head(surveys[, "genus"]) #same information as LINE 65 but different format
 #check what is going on in this function 
 class(head(surveys[,"genus"]))#R returns all of the value not the data frame
 class(head(surveys["genus"])) 
 surveys[["genus"]] #same as LINE 58
-
+head(surveys["genus"])#RUN THIS TO UNDERSTAND MAYA
+head(surveys[["genus"]]) #double bracket gets you the data that is in the second level/ data manipulation is easier
+head(surveys["genus",])
+head(surveys[,"genus"]) #because genus is a column 
+str(surveys)
+surveys$genus
 
 #walk through the data frame object
 #index numerically or use the dollar sign 
@@ -66,8 +82,10 @@ surveys[["genus"]] #same as LINE 58
 surveys$record_id
 
 install.packages("tidyverse") 
-library(tidyverse)
+library(tidyverse) #everytime you open new R script, you have to download "tidyverse" each time 
+#simplifies verses as the name suggests
 
+?read_csv #tidy version of read.csv
 t_surveys <- read_csv('data/portal_data_joined.csv')
 t_surveys
 class(t_surveys)

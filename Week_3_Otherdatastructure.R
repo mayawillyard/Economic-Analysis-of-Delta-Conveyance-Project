@@ -12,6 +12,7 @@ length(b[[2]]) #when you want to know the length of something inside the vector
 
 #Data frames 
 #picky lists/all data has to be in the same length
+#most commonn form of data type in R
 letters
 data.frame(letters) #all data are represented in a column 
 df <- data.frame(letters)
@@ -19,8 +20,8 @@ length(df)
 #what does line 18 mean? use dim function 
 dim(df) #26 rows, 1 column 
 #another method to evalute this 
-nrow(df)
-ncol(df)
+nrow(df) #to know the number of rows in the dataframe 
+ncol(df) #(rows,columns)
 
 df2 <- data.frame(letters, letters)
 str(df2) #since created two rows, R differentiates 
@@ -48,6 +49,21 @@ levels(response) #R assigned different levels to the responses
 nlevels(response) #number of unique levels in the factor 
 typeof(response) #R sees it as a level not a word 
 response
+#example 2
+animals <- factor(c("pigs", "duck", "duck","goose", "goose"))
+animals
+class(animals) #what type of class it is = factors
+levels(animals) #what the levels are 
+nlevels(animals) # numberof levels
+animals <- factor(x = animals, levels = c("goose","pigs","duck"))
+animals
+
+year <- factor(c(1978,1980,1934,1979))
+year
+class(year)
+as.numeric(year) #change characters into numeric 
+levels(year)
+year<- as.numeric(as.character(year))
 
 #how to change order ot the responses from typeof function 
 response <- factor(response, levels = c("yes", "maybe", "no"))

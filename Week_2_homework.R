@@ -7,7 +7,7 @@ hw2 <- replace(hw2, c(4,12,22,27), NA)
 #this means that function will find all of the missing values in "hw2"
 # R already knows what NA is a missing value so you ask R to find it by running the function
 hw2[!is.na(hw2)]
-hw2[!is.na(hw2)] [hw2[!is.na(hw2)]>= 14 & hw2[!is.na(hw2)]<= 38] #exclusion process of 14-38
+hw2[!is.na(hw2)] [hw2[!is.na(hw2)]>= 14 & hw2[!is.na(hw2)]<= 38] #exclusion process of 14-38 / [!is.na(hw2) & hw2 >= 14 & hw2 <=38]
 prob1 <- hw2[!is.na(hw2)] [hw2[!is.na(hw2)]>= 14 & hw2[!is.na(hw2)]<= 38] 
 prob1 #Question 1
 times3 <- prob1 *3
@@ -15,3 +15,9 @@ times3 #Question 2
 plus10 <- times3 + 10
 plus10 #Question 2
 plus10[c(TRUE,FALSE)] #Question 3
+
+
+?runif
+#cbind(hw2,hw2, hw2+hw2)
+#cbind(hw2,plus10,hw2, plus10)
+
