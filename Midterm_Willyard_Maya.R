@@ -31,7 +31,7 @@ laps_running <- lap_data %>%
   summarize(mean_steps_per_minute = mean(steps_per_minute)) %>% 
   pivot_wider(names_from = pace, values_from = mean_steps_per_minute) %>% 
   select(slow, medium, fast)
-# it doesn't work??
+# it doesn't work?? how do you rearrange existing columns?
 
 # Question 6 
 
