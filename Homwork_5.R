@@ -58,3 +58,4 @@ sumn[1] # gives the name and the value
 sumn[[2]] # gives the value 
 sumn[[5]]
 # two brackets remove the label 
+# use "quantile" to plug in 
