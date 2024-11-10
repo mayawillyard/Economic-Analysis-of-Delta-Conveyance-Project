@@ -13,7 +13,7 @@ gapminder %>%
   # what you want to color code is the color = 
 # data = mean_lifeexpectancy, mapping = aes( x = year, y = life_expectancy, color = continent)
 view(mean_lifeexpectancy)
-
+# you need to have year or else it doens't know what data to take it from 
 
 ?geom_line
 
@@ -40,5 +40,7 @@ gapminder %>%
   ggtitle("Life Expectancy of Five Countries") +
   xlab("Country") + ylab("Life Expectancy")
   
-
+# %in% "within"
 ?geom_jitter
+# Alternative methof of boxplot 
+# ggplot(data = gapminder [gapminder$country %in% c("Brazil","China", "El Salvador", "Niger", "United States of America"),], mapping = aes (x)
