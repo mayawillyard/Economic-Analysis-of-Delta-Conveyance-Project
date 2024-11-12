@@ -24,7 +24,7 @@ ggplot(diamonds, aes(x = carat, y=price)) +
 ggplot(diamonds, aes(x = carat, y=price, color = clarity)) + 
   geom_point(alpha = 0.2)
 
-# use variable to detemrine what the plot looks like, has to be under the aesthetics 
+# use variable to determine what the plot looks like, has to be under the aesthetics 
 # if one color, it can go under the "geompoint" 
 # alpha increases the transparency 
 # clarity colors in gradient: lightest to darkest

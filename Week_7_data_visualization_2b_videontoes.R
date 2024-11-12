@@ -21,7 +21,7 @@ ggplot(diamonds, aes(x = clarity, y = carat, color = price)) +
   geom_point(alpha = 0.2) + theme_classic() +
   scale_color_viridis_c(Option = "A", direction = -1)
 # -1 used to reverse the direction of the colorscale 
-# _c means continous data 
+# _c means continuous data 
 # it shows error?? why won't this run 
 
 # Different Virdis color scheme 
