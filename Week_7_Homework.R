@@ -38,3 +38,4 @@ pc %>% ggplot(aes((x = fct_reorder(country,population_change)), y = population_c
 # geom_col by default counts the value in relation to y values but bar would only count the values 
 # geom_col shows VALUES 
 ?geom_col
+# this is called the helpfile 
