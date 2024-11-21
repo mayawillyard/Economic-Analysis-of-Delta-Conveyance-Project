@@ -2,7 +2,7 @@
 # how to format date and time 
 # Three types: Dates, posixt(calendar time), posixlt (local time)
 
-# seperate date by strings with commas and quotes 
+# separate date by strings with commas and quotes 
 sample_dates_1 <- c("2018-02-01", "2018-03-21", "2018-10-05", 
                     "2019-01-01", "2019-02-18")
 
@@ -13,7 +13,8 @@ class(sample_dates_1)
 sample_dates_1
 # formated well 
 # Month, Day, Year is the WRONG FORMAT 
-# it must be writte in Year, Month, Day
+# it must be write in Year, Month, Day
+# string must be in year-month-day format
 
 # Example
 sample_dates_2 <- c("02-01-2018", "03-21-2018", "10-05-2018", 
@@ -95,6 +96,10 @@ head(mloa1)
 # import raw dataset and specify column types 
 mloa2 <- read_csv("https://raw.githubusercontent.com/ucd-cepb/R-DAVIS/master/data/mauna_loa_met_2001_minute.csv",
                   col_types = "cccccccddddddd")
+# 7 cs and 7 ds
+
+class(mloa1$year)
+
 
 glimpse(mloa1)
 glimpse(mloa2)
@@ -104,6 +109,7 @@ mloa2$datetime <- paste(mloa2$year, "-", mloa2$month,
                         "-", mloa2$day, ",", mloa2$hour24, ":",
                         mloa2$min, sep = "")
 head(mloa2$datetime)
+# separation is an empty string because we want them to be together 
 
 glimpse(mloa2)
 
@@ -118,10 +124,14 @@ head(mloa2$datetime_test)
 mloa2$datetime_test2 <- as_datetime(mloa2$datetime, 
                                     tz = "Pacific/Honolulu",
                                     format = "%Y-%m-%d, %H:%M")
+# doesn't ask what order to look for the data in 
+
 # have to specify format with as_datetime 
 # instead, use ymd_hm 
 mloa2$datetime_test2 <- ymd_hm(mloa2$datetime, 
                                tz = "Pacific/Honolulu")
+# you have to use it in the same order of y,m,d,h,m
+
 # alternatively, you can wrap as a as. character
 mloa1$datetime <- ymd_hm(as.character(mloa2$datetime), 
                          tz = "Pacific/Honolulu")
@@ -134,12 +144,13 @@ tz(mloa1$datetime)
 months <- month(mloa2$datetime)
 table(months)
 # summary of when the data was observed in 
+# the name of the months are in numbers 
 
 # make that data more readable through label 
 months <- month(mloa2$datetime, label = TRUE, abbr = TRUE)
 table(months)
 
-# how to check daylight savings time 
+# how to check daylight savings time dst
 dst(mloa2$datetime_test[1]) # asks if data was in daylight savings time
 dst(mloa2$datetime) # same length as the number of rows
 
@@ -150,3 +161,15 @@ dst(gm)
 hi <- with_tz(latime, tz = "Pacific/Honolulu")
 dst(hi)
 # hawaii doesn't do daylight savings time 
+
+# How to subtract dates
+seq(1,10,1)
+seq(mdy("01-01-2020"), mdy("10-01-2020"), by = 1)
+# ways to create arbitary dates
+
+mdy("01-01-2020") - months(2)
+# as works on a column because it treats it as a column 
+# does this mean that it doesn't work on a row? 
+# date hack that can be used 
+decimal_date(mdy("10-01-2020"))
+date_decimal(decimal_date(mdy("10-01-2020")))
